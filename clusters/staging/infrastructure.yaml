@@ -39,3 +39,33 @@ spec:
       target:
         kind: ClusterIssuer
         name: letsencrypt
+---
+# istio-base-kustomization.yaml
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: istio-base
+  namespace: flux-system # Flux namespace, typically 'flux-system'
+spec:
+  interval: 5m
+  path: "./infrastructure/istio-base"
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+---
+# istio-ingress-kustomization.yaml
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: istio-ingress
+  namespace: flux-system # Flux namespace, typically 'flux-system'
+spec:
+  interval: 5m
+  dependsOn:
+    - name: istio-base
+  path: "./infrastructure/istio-ingress"
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system

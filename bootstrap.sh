@@ -15,11 +15,11 @@ else
 fi
 
 # Create production cluster if it doesn't exist
-if ! kind get clusters | grep -q 'production'; then
-  kind create cluster --name production
-else
-  echo "Production cluster already exists. Skipping creation."
-fi
+#if ! kind get clusters | grep -q 'production'; then
+#  kind create cluster --name production
+#else
+#  echo "Production cluster already exists. Skipping creation."
+#fi
 
 # Bootstrap staging
 flux bootstrap github \
@@ -31,10 +31,10 @@ flux bootstrap github \
     --path=clusters/staging
 
 # Bootstrap production
-flux bootstrap github \
-    --context=kind-production \
-    --owner="$GITHUB_USER" \
-    --repository="$GITHUB_REPO" \
-    --branch=main \
-    --personal \
-    --path=clusters/production
+#flux bootstrap github \
+#    --context=kind-production \
+#    --owner="$GITHUB_USER" \
+#    --repository="$GITHUB_REPO" \
+#    --branch=main \
+#    --personal \
+#    --path=clusters/production
