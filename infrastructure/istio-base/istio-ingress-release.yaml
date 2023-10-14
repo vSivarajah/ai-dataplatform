@@ -20,8 +20,8 @@ spec:
         name: istio
         namespace: istio-system
       interval: 1m
-    values:
-      gateway:
-        istio-ingressgateway:
-          labels:
-            istio: ingressgateway
+  values:
+    gateway:
+      istio-ingressgateway:
+        labels:
+          istio: ingressgateway
