@@ -3,8 +3,6 @@ kind: HelmRelease
 metadata:
   name: istio-ingress
   namespace: istio-ingress
-  labels:
-    istio: ingressgateway
 spec:
   interval: 5m
   dependsOn:
